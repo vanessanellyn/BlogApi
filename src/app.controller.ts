@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Put, Delete, Param, Body, HttpCode } from "@nestjs/common"
+import { Controller, Get, Post, Put, Delete, Param, Body, HttpCode, ParseUUIDPipe } from "@nestjs/common"
 import { ReportType, data } from 'src/data'
 import { AppService } from "./app.service";
+import { CreateReportDto, UpdateReportDto } from "./dto/report.dto";
 
 // Class that allows us to create different endpoints
 @Controller('report/:type')
@@ -18,16 +19,17 @@ export class AppController {
   @Get(':id')
   getOneReport(
     @Param('type') type: string, 
-    @Param('id') id: string
+    @Param('id', ParseUUIDPipe) id: string
   ) {
     const reportType = (type === "income") ? ReportType.INCOME : ReportType.EXPENSE;
     return this.appService.getOneReport(reportType, id);
   }
 
   @Post()
-  //createReport(@Body() body: {amount:number, source: string}) {
   createReport(
-    @Body() { amount, source }: { amount:number, source: string }, 
+  //@Body() body: {amount:number, source: string}) {
+  //@Body() { amount, source }: { amount:number, source: string }, 
+    @Body() { amount, source }: CreateReportDto, 
     @Param('type') type: string
   ) {
     const reportType = (type === "income") ? ReportType.INCOME : ReportType.EXPENSE;
@@ -36,9 +38,9 @@ export class AppController {
 
   @Put(':id')
   updateReport(
-    @Param('id') id: string, 
+    @Param('id', ParseUUIDPipe) id: string, 
     @Param('type') type: string,
-    @Body() body: {amount:number, source: string}
+    @Body() body: UpdateReportDto
   ) {
       const reportType = type === 'income' ? ReportType.INCOME : ReportType.EXPENSE;
       return this.appService.updateReport(reportType, id, body)
@@ -47,7 +49,7 @@ export class AppController {
   @HttpCode(204)
   @Delete(':id')
   deleteReport(
-    @Param('id') id: string, 
+    @Param('id', ParseUUIDPipe) id: string, 
   ) {
     return this.appService.deleteReport(id);
   }

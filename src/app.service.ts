@@ -8,6 +8,11 @@ interface Report {
   amount: number;
 }
 
+interface UpdateReport {
+  source?: string;
+  amount?: number;
+}
+
 @Injectable()
 // Class that stores all business logic
 export class AppService {
@@ -35,8 +40,7 @@ export class AppService {
     return newReport;
   }
 
-  updateReport(type: ReportType, id: string, body: Report
-  ) {
+  updateReport(type: ReportType, id: string, body: UpdateReport) {
     const reportToUpdate = data.report
       .filter((report) => report.type === type)
       .find((report) => report.id === id)
@@ -52,7 +56,7 @@ export class AppService {
         updated_at: new Date()
       }
 
-      console.log(data.report[reportIndex])
+      //console.log(data.report[reportIndex])
       return data.report[reportIndex]
   }
 
