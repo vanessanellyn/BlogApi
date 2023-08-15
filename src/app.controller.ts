@@ -1,30 +1,34 @@
-import { Controller, Get, Post, Put, Delete } from "@nestjs/common"
+import { Controller, Get, Post, Put, Delete, Param } from "@nestjs/common"
+import { report } from "process"
+import { ReportType, data } from 'src/data'
 
-@Controller('')
+// Class that allows us to create different endpoints
+@Controller('report/:type')
 export class AppController {
 
   @Get()
-  getAllIncomeReports() {
-    return []
+  getAllReports(@Param('type') type: string) {
+    const reportType = (type === "income") ? ReportType.INCOME : ReportType.EXPENSE;
+    return data.report.filter(report => report.type === reportType)
   }
 
   @Get(':id')
-  getOneIncomeReport() {
+  getOneReport() {
     return []
   }
 
   @Post()
-  createIncomeReport() {
+  createReport() {
     return 'created'
   }
 
   @Put(':id')
-  updateIncomeReport() {
+  updateReport() {
     return 'updated'
   }
 
   @Delete(':id')
-  deleteIncomeReport() {
+  deleteReport() {
     return 'delete'
   }
 }
