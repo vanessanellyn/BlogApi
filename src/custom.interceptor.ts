@@ -23,7 +23,7 @@ export class CustomInterceptor implements NestInterceptor {
         // response = an object
         const response = {
           ...data,
-          createdAt: data.created_at
+          createdAt: data.created_at,
         };
         delete response.updated_at;
         delete response.created_at;
