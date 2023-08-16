@@ -7,6 +7,10 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({
   //completely removes any extra value that's not included in the DTO
     whitelist: true,
+    transform: true,
+    transformOptions: {
+      enableImplicitConversion: true,
+    },
   }));
   await app.listen(3000);
 }
