@@ -64,7 +64,7 @@ export class AppService {
       }
 
       //console.log(data.report[reportIndex])
-      return data.report[reportIndex]
+      return new ReportResponseDto(data.report[reportIndex]);
   }
 
   deleteReport(id: string) {

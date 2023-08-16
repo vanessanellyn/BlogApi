@@ -31,13 +31,21 @@ export class ReportResponseDto {
   id: string;
   source: string;
   amount: number;
-  created_at: Date;
-
-  @Exclude()
-  updated_at:Date;
   type: ReportType;
 
-  //Enables us to pass any object that resembles the one we have above (partial is ok)
+  // Renames the property on call
+  @Expose({ name: 'createdAt' })
+  transformCreatedAt() {
+    return this.created_at;
+  }
+  // Will not show the property on call
+  @Exclude()
+  updated_at: Date;
+
+  @Exclude()
+  created_at: Date;
+
+  // Enables us to pass any object that resembles the one we have above (partial is ok)
   constructor(partial: Partial<ReportResponseDto>){
     Object.assign(this, partial)
   }
