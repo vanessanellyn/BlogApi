@@ -6,7 +6,13 @@ ExpenseApp is a web application designed to help users manage their expenses eff
 - View detailed expense reports
 - User-friendly interface for easy navigation
 
-## NestJS Features Takeaways
+## Technologies Used
+- **JavaScript**: A web programming language for interactive websites.
+- **[Node.js](https://nodejs.org/en)**: A JavaScript runtime built on Chrome's V8 JavaScript engine.
+- **[Typescript](https://www.typescriptlang.org/)**: Superset of JavaScript with static typing for enhanced code reliability.
+- **[NestJS](https://nestjs.com/)**: A progressive Node.js framework for building scalable server-side applications.
+  
+## NestJS Takeaways 
 - Controllers
 - Modules
 - Services
