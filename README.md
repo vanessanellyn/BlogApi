@@ -1,4 +1,4 @@
-# ExpenseApp
+<h1 align="center">Expense App</h1> 
 ExpenseApp is a web application designed to help users manage their expenses efficiently. This project serves as a learning experience for exploring different frameworks and technologies in JavaScript, specifically NestJS.
 
 ## Features
