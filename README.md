@@ -6,9 +6,12 @@ ExpenseApp is a web application designed to help users manage their expenses eff
 - View detailed expense reports
 - User-friendly interface for easy navigation
 
-## Technologies Used
-- JavaScript
-- Typescript
+## NestJS Features Takeaways
+- Controllers
+- Modules
+- Services
+- Guards
+- Data Transfer Objects
 
 ## Getting Started
 
